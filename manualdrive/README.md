@@ -20,7 +20,19 @@
 
 # main.cpp 
 
- ➨ 
+ ➨ https://github.com/smHan22/smart-vision/blob/main/manualdrive/main.cpp
+
+ • jetson 카메라로 실시간 영상을 촬영하고, 촬영된 영상을 로컬 파일과 스트림으로 전송하면서 다이나믹셀 모터를 제어하는 것.
+
+     • VideoCapture source(src, CAP_GSTREAMER);는 src 파이프라인을 사용해 카메라 입력을 설정.
+
+     • dst1은 GStreamer를 사용하여 영상 데이터를 UEP로 전송하는 파이프라인 스트링.
+
+     • local_file은 촬영한 영상을 로컬에 저장할 파일 이름. 
+
+     • goal1과 goal2에 설정된 목표 속도에 따라 vel1과 vel2의 점진적으로 증가 또는 감소시키며, 갑작스러운 속도 변화를 줄임. mx.setVelocity(vel1, vel2);를 통해 모터의 속도를 설정.
+
+     • ctrl_c_pressed가 true일 때 루프를 탈출하여 프로그램을 종료함.
 
 
 # 실행결과 
