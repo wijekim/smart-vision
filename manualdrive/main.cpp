@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <signal.h>
 #include "dxl.hpp"
+#include <sys/time.h>
 #include "opencv2/opencv.hpp"
 
 using namespace cv;
