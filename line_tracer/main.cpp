@@ -6,7 +6,7 @@ using namespace cv;
 using namespace std;
 
 int main() {
-    string videoPath = "/home/hsmin22/workspace/line_tracer/simulation/5_lt_cw_100rpm_out.mp4";
+    string videoPath = "/home/linux/workspace/line_tracer/simulation/7_lt_ccw_100rpm_in.mp4";
 
     VideoCapture cap(videoPath);
     if (!cap.isOpened()) {
@@ -51,7 +51,6 @@ int main() {
             int y = stats.at<int>(i, CC_STAT_TOP);    // 바운딩 박스의 왼쪽 상단 y 좌표
             int width = stats.at<int>(i, CC_STAT_WIDTH);  // 바운딩 박스의 너비
             int height = stats.at<int>(i, CC_STAT_HEIGHT); // 바운딩 박스의 높이
-            int area = stats.at<int>(i, CC_STAT_AREA);  // 객체의 넓이
 
             // 각 객체의 중심점 계산
             Point center = Point(centroids.at<double>(i, 0), centroids.at<double>(i, 1));  // 중심점은 centroids에서 가져옴
@@ -67,7 +66,7 @@ int main() {
             double minDistance = DBL_MAX;       // 중앙 좌표와 각 객체의 중심점 간의 최소 거리를 저장할 변수 (DBL_MAX는 double 타입이 가질 수 있는 최대값)
             Point closestCenter;        // 각 객체의 중심점 간의 최소 거리를 저장할 변수
 
-            for (int i = 0; i < lineCenters.size(); i++) {      // 백터에 저장된 각 라인의 중심점을 순차적으로 확인
+            for (size_t i = 0; i < lineCenters.size(); i++) {      // 백터에 저장된 각 라인의 중심점을 순차적으로 확인
                 double distance = norm(lineCenters[i] - centerOfImage);     // 객체의 중심점과 이미지의 중앙점의 거리를 계산 (norm은 두 점 사이의 유클리드 거리를 계산)
 
                 if (distance < minDistance) {       // 계산된 distance가 minDistance보다 작으면
@@ -88,7 +87,7 @@ int main() {
         else if (previousCenter.x != -1 && !lineCenters.empty()) {      // 중심점을 찾은 경우와 객체 중심점이 하나 이상 있을 때의 조건
             double minDistance = DBL_MAX;       // 중앙 좌표와 각 객체의 중심점 간의 최소 거리를 저장할 변수 (DBL_MAX는 double 타입이 가질 수 있는 최대값)
             Point closestCenter;        // 가장 가까운 중심점을 저장할 변수
-            for (int i = 0; i < lineCenters.size(); i++) {      // 백터에 저장된 각 라인의 중심점을 순차적으로 확인
+            for (size_t i = 0; i < lineCenters.size(); i++) {      // 백터에 저장된 각 라인의 중심점을 순차적으로 확인
                 double distance = norm(lineCenters[i] - previousCenter);        // 객체의 중심점과 이전 중심점간의 거리를 계산 norm(두 점의 차이를 제곱한 후 제곱근을 취해 실제 거리를 반환)
                 if (distance < minDistance && distance < MAX_DISTANCE) {        // 계산된 거리가 모두 작으면
                     minDistance = distance;     // 값 저장
