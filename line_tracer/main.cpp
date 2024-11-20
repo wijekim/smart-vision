@@ -96,13 +96,13 @@ int main() {
             }
 
             if (minDistance < MAX_DISTANCE) {       // 가장 가까운 라인 중심점이 이전 중심점과 충분히 가까운 경우
-                rectangle(colorBinary, Rect(closestCenter.x - 10, closestCenter.y - 10, 20, 20), Scalar(0, 0, 255), 2);     // 파란색 바운딩 박스
+                rectangle(colorBinary, Rect(closestCenter.x - 10, closestCenter.y - 10, 20, 20), Scalar(0, 0, 255), 2);     // 빨간색 바운딩 박스
                 circle(colorBinary, closestCenter, 5, Scalar(0, 0, 255), -1);       // 원 그림
                 previousCenter = closestCenter;     // 현재 라인 중심점을 이전 중심점에 저장
             } 
             else {      // minDistance가 <MAX_DISTANCE보다 크면 (라인이 사라진 경우 또는 너무 멀리 떨어진 경우)
-                rectangle(colorBinary, Rect(previousCenter.x - 10, previousCenter.y - 10, 20, 20), Scalar(255, 0, 0), 2);       // 빨간색 바운딩 박스
-                circle(colorBinary, previousCenter, 5, Scalar(255, 0, 0), -1);      // 원 그림
+                rectangle(colorBinary, Rect(previousCenter.x - 10, previousCenter.y - 10, 20, 20), Scalar(0, 0, 255), 2);       // 빨간색 바운딩 박스
+                circle(colorBinary, previousCenter, 5, Scalar(0, 0, 255), -1);      // 원 그림
             }
 
             // error 값도 갱신
