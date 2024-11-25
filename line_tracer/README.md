@@ -17,6 +17,7 @@ https://github.com/smHan22/smart-vision/blob/f372cbe151428829943ed32c1621077622c
 
 https://github.com/smHan22/smart-vision/blob/43959dff97d8274cf134eedba4f08d541011f169/line_tracer/main.cpp#L22-L28
 
+```ruby
 ● 영상 처리와 관련된 변수들을 초기화합니다.
 
 ● previousCenter는 이전 프레임에서 라인의 중심점을 저장하는 변수이며, firstFrame은 첫 번째 프레임을 처리하는지 확인하는 변수입니다.
@@ -24,9 +25,11 @@ https://github.com/smHan22/smart-vision/blob/43959dff97d8274cf134eedba4f08d54101
 ● MAX_DISTANCE는 라인의 중심점 간의 최대 허용 거리로 설정되며, start와 edn1은 측정을 위한 변수입니다.
 
 ● error는 중앙점과 라인의 중심점 간의 오차를 계산하는 변수입니다.
+```
 
 https://github.com/smHan22/smart-vision/blob/f6c86c6a355d03f59dcd9ec9131eb645077c8f81/line_tracer/main.cpp#L29-L45
 
+```ruby
 ● 비디오에서 한 프레임을 읽고, 그레이스케일로 변환합니다.
 
 ● cap >> frame는 비디오에서 한 프레임을 읽어옵니다. 비디오가 끝나면 frame.empty()가 true가 되어 루프를 종료합니다.
@@ -40,5 +43,19 @@ https://github.com/smHan22/smart-vision/blob/f6c86c6a355d03f59dcd9ec9131eb645077
 ● Rect roi는 (0, 270)dptj (640, 90) 크기로 자릅니다.
 
 ● ResizedBinary = binary(roe)로 이진화된 영상에서 정의된 영역을 잘라냅니다.
+```
 
 https://github.com/smHan22/smart-vision/blob/83a1647082c41f5e2203509030ede28a1e905121/line_tracer/main.cpp#L47-L67
+
+```ruby
+● connectedComponentsWithStats() 함수는 이진화된 영상에서 연결된 객체들을 찾아 라벨을 지정하고, 각 객체의 바운딩 박스와 중심점을 계산합니다.
+
+● labelImage는 각 픽셀의 라벨을 저장하는 영상, stats는 바운딩 박스 정보, centroids는 각 객체의 중심점 정보를 저장합니다.
+
+● 각 라인의 중심점을 계산하고 바운딩 박스를 그립니다.
+
+● 각 라벨에 대해 stats에서 바운딩 박스의 위치와 크기를 가져오고, centroids에서 중심점을 계산합니다.
+
+● lineCenters 백터에 각 라인의 중심점을 추가하고, rectangle()과 circle() 함수로 바운딩 박스와 중심점을 그립니다.
+
+```
