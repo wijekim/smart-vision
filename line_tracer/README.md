@@ -59,3 +59,21 @@ https://github.com/smHan22/smart-vision/blob/83a1647082c41f5e2203509030ede28a1e9
 ● lineCenters 백터에 각 라인의 중심점을 추가하고, rectangle()과 circle() 함수로 바운딩 박스와 중심점을 그립니다.
 
 ```
+
+https://github.com/smHan22/smart-vision/blob/e699b52950b296793e19cd52ecfcdd0171176b52/line_tracer/main.cpp#L69-L90
+
+```ruby
+● if (firstFrame && !lineCenters.empty())는 firstFrame이 ture일 때 즉, 첫 번째 프레임일 때 라인 중심점(lineCenters)이 하나 이상 있는 경우에만 실행됩니다. lineCenter가 비어 있으면 라인을 찾을 수 없기 때문에 라인 추적을 할 수 없습니다.
+
+● Point centerOfImage(frame.cols / 2, frame.rows / 2)는 영상의 중앙 좌표를 계산합니다. 라인 추적의 기준이 되기 위함입니다. 중앙에서 가장 가까운 라인 중심점을 찾고, 그 차이를 이용하여 라인 추적 방향을 결정할 수 있습니다.
+
+● double minDistance = DBL_MAX;는 라인 중심점과 ;이미지 중앙 최소 거리를 추적하기 위한 초기값으로 double 타입에서 가질 수 있는 가장 큰 값으로 설정합니다.
+
+● for (size_t i = 0; i < lineCenters.size(); i++) 이 반복문 내부에서는 각 라인 중심점에 대해, 중앙과 라인 중심점 간의 거리를 계산합니다. if (distance < minDistance) 계산된 거리가 minDistance보다 작으면, 그 중심점을 가장 가까운 중심점으로 선택합니다.
+
+● rectangle(colorBinary, Rect(closestCenter.x - 10, closestCenter.y - 10, 20, 20), Scalar(0, 0, 255), 2)은 가장 가까운 라인 중심점을 빨간색 바운딩 박스와 원으로 표시합니다.
+
+● error 계산과, 현재 라인 중심점을 previousCenter에 저장하여, 다음 프레임에서 추적할 라인을 결정하는 기준으로 사용됩니다.
+
+● 첫 번째 프레임 처리가 완료되었으므로, firstFrame을 false로 설정하여 이후 프레임에서는 라인을 계속 추적할 수 있도록 합니다.
+```
