@@ -8,7 +8,7 @@ using namespace cv;
 using namespace std;
 
 int main() {
-    string videoPath = "/home/linux/workspace/line_tracer/simulation/7_lt_ccw_100rpm_in.mp4";
+    string videoPath = "/home/hsmin22/workspace/line_tracer/simulation/7_lt_ccw_100rpm_in.mp4";
 
     VideoCapture cap(videoPath);
     if (!cap.isOpened()) {
@@ -36,6 +36,9 @@ int main() {
         }
 
         cvtColor(frame, gray, COLOR_BGR2GRAY);
+
+        Scalar MeanBrightness = mean(gray);
+        gray = gray + (100 - MeanBrightness[0]);
         threshold(gray, binary, 130, 255, THRESH_BINARY);
 
         Rect roi(0, 270, 640, 90);
@@ -123,7 +126,6 @@ int main() {
         diff1 = end1.tv_sec + end1.tv_usec / 1000000.0 - start.tv_sec - start.tv_usec / 1000000.0;
         cout << "error: " << error << ", " << "time: " << diff1 << endl;
     }
-
     cap.release();
     return 0;
 }
@@ -182,6 +184,8 @@ int main() {
         }
 
         cvtColor(frame, gray, COLOR_BGR2GRAY);
+        Scalar MeanBrightness = mean(gray);
+        gray = gray + (100 - MeanBrightness[0]);
         threshold(gray, binary, 130, 255, THRESH_BINARY);
 
         Rect roi(0, 270, 640, 90);
