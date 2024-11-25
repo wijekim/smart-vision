@@ -77,3 +77,25 @@ https://github.com/smHan22/smart-vision/blob/e699b52950b296793e19cd52ecfcdd01711
 
 ● 첫 번째 프레임 처리가 완료되었으므로, firstFrame을 false로 설정하여 이후 프레임에서는 라인을 계속 추적할 수 있도록 합니다.
 ```
+
+https://github.com/smHan22/smart-vision/blob/a720728d50ed1d5904084999e576bdd8e6fb5880/line_tracer/main.cpp#L92-L116
+
+```ruby
+● 여기서는 두 번째 프레임부터 라인을 추적하는 과정을 다룹니다. 첫 번째 프레임에서 previousCenter가 설정되었기 때문에, 이후 프레임에서는 이 previousCenter를 기준으로 가장 가까운 라인 중심점을 찾아서 추적합니다.
+
+● else if (previousCenter.x != -1 && !lineCenters.empty()) previousCenter.x가 -1이 아니라는 것은 첫 번째 프레임에서 중심점을 찾았다는 뜻입니다. 또한 lineCenter가 비어있지 않아야 라인 추적을 계속할 수 있습니다. 이 조건이 참일 때만 라인 추적을 계속합니다.
+
+● double minDistance = DBL_MAX; 라인 중심점과 이전 중심점 간의 최소 거리를 추적하기 위한 초기값으로 매우 큰 값으로 설정합니다.
+
+● for (size_t i = 0; i < lineCenters.size(); i++) 반복문 내에서 norm(lineCenters[i] - previousCenter)를 사용하여 이전 중심점과 현재 라인 중심점 간의 거리를 계산합니다.
+
+● if (distance < minDistance && distance < MAX_DISTANCE) 이 조건에서 계산된 거리가 minDistance보다 작고, MAX_DISTANCE보다 작은 경우에만 최소 거리로 저장합니다. MAX_DISTANCE는 너무 멀리 떨어진 라인 중심점은 추적하지 않도록 하는 값입니다.
+
+● 가장 가까운 라인 중심점에 빨간색 바운딩 박스와 원을 그립니다.
+
+● else문에서는 라인이 사라진 경우를 처리합니다. 만약 가까운 라인 중심점이 MAX_DISTANCE보다 멀리 떨어져 있어 추적이 불가능한 경우, 이전 중심점을 그대로 사용하여 해당 위치에 바운딩 박스와 원을 그립니다.
+
+● Point centerOfImage(frame.cols / 2, frame.rows / 2); 영상 중앙의 좌표를 계산하고, error = centerOfImage.x - closestCenter.x; 중앙과 가장 가까운 라인 중심점 간의 x좌표 차이를 계산하여 error값을 업데이트 합니다.
+
+● previousCenter = closestCenter; 현재 찾은 가장 가까운 라인 중심점을 previousCenter에 저장합니다.
+```
