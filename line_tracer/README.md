@@ -5,7 +5,8 @@ https://youtu.be/2eD7gTxhmKs
 
 # 코드 설명
 
-```string videoPath = "/home/hsmin22/workspace/line_tracer/simulation/7_lt_ccw_100rpm_in.mp4";
+```ruby
+string videoPath = "/home/hsmin22/workspace/line_tracer/simulation/7_lt_ccw_100rpm_in.mp4";
 
 VideoCapture cap(videoPath);
 if (!cap.isOpened()) {
@@ -14,4 +15,5 @@ if (!cap.isOpened()) {
 }
 
 double fps = cap.get(CAP_PROP_FPS);
-int delay = cvRound(1000 / fps);```
+int delay = cvRound(1000 / fps);
+```
