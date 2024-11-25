@@ -99,3 +99,13 @@ https://github.com/smHan22/smart-vision/blob/a720728d50ed1d5904084999e576bdd8e6f
 
 ● previousCenter = closestCenter; 현재 찾은 가장 가까운 라인 중심점을 previousCenter에 저장합니다.
 ```
+
+https://github.com/smHan22/smart-vision/blob/76225e5e26c2b183d94aceba822725a938da0ba5/line_tracer/main.cpp#L118-L127
+
+```ruby
+● imshow()는 원본 비디오 프레임과, 바운딩 박스와 라인의 중심점을 표시한 이진화된 이미지를 시각적으로 보여줍니다.
+
+● 조건문은 사용자가 ESC 키를 눌렀을 때 break로 루프를 종료합니다.
+
+● 실행 시간 및 에러를 출력합니다.
+```
