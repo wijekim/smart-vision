@@ -1,15 +1,14 @@
-# jetson 환경
-
 #include "opencv2/opencv.hpp"
 #include <iostream>
 #include "dxl.hpp"
 #include <unistd.h>
+#include <signal.h>
 #include <cmath>
 #include <sys/time.h>
 using namespace cv;
 using namespace std;
 
-bool ctrl_c_pressed;
+bool ctrl_c_pressed = false;
 void ctrlc(int)
 {
     ctrl_c_pressed = true;
@@ -42,11 +41,14 @@ int main() {
     bool firstFrame = true;  // 첫 번째 프레임을 처리하는지 여부
     const double MAX_DISTANCE = 100.0;  // 라인 후보 간의 최대 허용 거리
     struct timeval start, end1;
-    double diff1;
     double error = 0.0;  // error 값을 처음에 0으로 초기화
     double k = 0.3;
     bool mode = false;
     const int targetDelayMs = 30; // 고정된 딜레이 30ms
+    if (!dxl.open()) { 
+    cout << "dxl open error" << endl; 
+    return -1; 
+    }
     while (true) {
         gettimeofday(&start, NULL);
 
@@ -132,6 +134,10 @@ int main() {
             Point centerOfImage(frame.cols / 2, frame.rows / 2);     // 이미지의 중앙 좌표를 계산
             error = centerOfImage.x - closestCenter.x;  // 영상의 중심과 라인의 중심 x좌표 차이
         }
+
+        int leftvel = 100 - k * error;
+        int rightvel = -(100 + k * error);
+
         if(dxl.kbhit())
         {
             char ch = dxl.getch();
@@ -139,14 +145,14 @@ int main() {
             else if(ch == 's') mode = true;
         }
         if(ctrl_c_pressed) break;
-        double leftvel = 100 - k * error;
-        double rightvel = -(100 + k * error);
+        leftvel = 100 - k* error;
+        rightvel = -(100 + k* error);
         if(mode) dxl.setVelocity(leftvel, rightvel);
 
         writer1 << frame;       // 원본 동영상 프레임
         writer2 << colorBinary;
 
-        gettimeofday(&end1, NULL); // 작업 끝난 시간 측정
+        gettimeofday(&end1, NULL); // 작업 끝난 시간 측정s
         double elapsedMs = (end1.tv_sec - start.tv_sec) * 1000.0 + (end1.tv_usec - start.tv_usec) / 1000.0;
 
         int sleepMs = targetDelayMs - static_cast<int>(elapsedMs); // 남은 시간 계산
@@ -157,9 +163,8 @@ int main() {
 
         cout << "error: " << error << ", leftvel: " << leftvel <<
         ", rightvl: " << rightvel << ", time: " << totalTime << endl;
-
-        if (waitKey(1) == 27) break; // 27 = ESC
     }
     cap.release();
+    dxl.close();
     return 0;
 }
