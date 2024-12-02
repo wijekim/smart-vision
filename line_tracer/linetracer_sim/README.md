@@ -36,3 +36,14 @@ error == 0이면 양쪽 바퀴 속도가 동일하여 직진
 
 ⦁ 모션 제어 실행
 
+https://github.com/smHan22/smart-vision/blob/31e80899364948857daec70b7da19d1b94195e27/line_tracer/linetracer_sim/main.cpp#L150
+
+```ruby
+mode가 true인 경우에만 모터 속도를 설정.
+
+'s'키를 입력하면 mode = true로 변경되어 모션 제어가 활성화.
+
+'q' 키를 입력하면 프로그램 종료.
+
+dxl.setVelocity(leftvel, rightvel)은 계산된 속도를 기반으로 모터를 제어하여 방향 및 이동 속도를 설정.
+```
