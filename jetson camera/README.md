@@ -42,16 +42,19 @@ TARGET: 최종적으로 생성할 파일의 이름
 
 
 # main.cpp 코드
-➨ https://github.com/smHan22/jetson-camera/blob/main/main.cpp
 
 • OpenCV의 TickMeter를 사용하여 각 프레임의 처리 시간을 측정하고, GStreamer와 videocapture, videoWriter를 활용하여 영상을 처리
 
-          Jetson Nano에서 GStreamer를 사용하여 카메라 영상을 입력받음
-          
-          각 포트로 영상을 전송하기 위해 VideoWriter 객체를 생성
-          
-          영상은 원본, 그레이스케일, 이진화의 세 가지 형식으로 변환되어 각각 writer1, writer2, writer3을 통해 송출
+https://github.com/smHan22/smart-vision/blob/9af135cc8f07717b5c8a865ba745c841ed042b05/jetson%20camera/main.cpp#L1-L55
 
+
+```
+Jetson Nano에서 GStreamer를 사용하여 카메라 영상을 입력받음
+          
+각 포트로 영상을 전송하기 위해 VideoWriter 객체를 생성
+          
+영상은 원본, 그레이스케일, 이진화의 세 가지 형식으로 변환되어 각각 writer1, writer2, writer3을 통해 송출
+```
 
 # 실행 결과
 
