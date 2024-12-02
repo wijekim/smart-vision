@@ -58,11 +58,4 @@ Jetson Nano에서 GStreamer를 사용하여 카메라 영상을 입력받음
 
 # 실행 결과
 
-![KakaoTalk_20241106_144621692](https://github.com/user-attachments/assets/102dca33-c7e0-4e06-8e3f-121279bc23c1)
-
-
-![KakaoTalk_20241106_144639929](https://github.com/user-attachments/assets/85a8c6fd-b413-42a8-9c3d-bd568d4bfd0c)
-
-
-
-    
+https://youtu.be/DudBvArEHAU
