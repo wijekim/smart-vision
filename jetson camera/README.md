@@ -23,6 +23,8 @@
 
 • Makefile은 프로젝트의 빌드 과정을 자동화하는 파일로, 여러 파일이 포함된 프로젝트를 쉽게 컴파일하고 관리할 수 있도록 함.
 
+• 빌드 규칙은 터미널에서 make 명령어를 입력하면 $(TARGET):$(STCS) 규칙이 실행되어 camera 실행 파일을 생성.
+
 https://github.com/smHan22/smart-vision/blob/e58f2652ed96c215bd7fa4cb8552c2bb6410d163/jetson%20camera/Makefile#L1-L11
 
 ```
@@ -34,9 +36,6 @@ SRCS: 컴파일할 소스 파일 목록
   
 TARGET: 최종적으로 생성할 파일의 이름
 ```  
-
-• 빌드 규칙
-    터미널에서 make 명령어를 입력하면 $(TARGET):$(STCS) 규칙이 실행되어 camera 실행 파일을 생성.
 
 
 
