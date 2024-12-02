@@ -4,26 +4,26 @@
 
 # Makefile
 
-➨ https://github.com/smHan22/Dynamic-Cell-Programming/blob/main/project2/Makefile
-
 • Makefile은 프로젝트의 빌드 과정을 자동화하는 파일로, 여러 파일이 포함된 프로젝트를 쉽게 컴파일하고 관리할 수 있도록 함.
 
-        • TARGET = dxl : 빌드할 최종 실행 파일의 이름을 dxl로 정의합니다.
+https://github.com/smHan22/smart-vision/blob/66d40174e8040c9bc66abf6f7e6c41bb5e11df4e/Dynamixel%20Programming/project2/Makefile#L1-L15
+```
+• TARGET = dxl : 빌드할 최종 실행 파일의 이름을 dxl로 정의합니다.
     
-        • OBJS = main.o dxl.o : 컴파일된 객체 파일들을 나열. main.o와 dxl.o가 객체 파일
+• OBJS = main.o dxl.o : 컴파일된 객체 파일들을 나열. main.o와 dxl.o가 객체 파일
     
-        • $(TARGET) : $(OBJS): 최종 목표인 dxl을 생성하는 규칙. main.o와 dxl.o 객체 파일에 의존.
+• $(TARGET) : $(OBJS): 최종 목표인 dxl을 생성하는 규칙. main.o와 dxl.o 객체 파일에 의존.
     
-        • $(CX) -o $(TARGET) $(OBJS) $(DXLFLAGS): (CX)는 C++ 컴파일러, -o $(TARGET)는 출력 파일을 dxl로 지정하는 명령. $(OBJS)          는 객체 파일들을 지정하고, $(DXLFLAGS)는 Dynamixel SDK의 포함 경로와 라이브러리 링크를 추가하는 플래그.
+• $(CX) -o $(TARGET) $(OBJS) $(DXLFLAGS): (CX)는 C++ 컴파일러, -o $(TARGET)는 출력 파일을 dxl로 지정하는 명령. $(OBJS)          는 객체 파일들을 지정하고, $(DXLFLAGS)는 Dynamixel SDK의 포함 경로와 라이브러리 링크를 추가하는 플래그.
 
-        • main.o : main.cpp dxl.hpp: main.o를 생성하는 규칙. 
+• main.o : main.cpp dxl.hpp: main.o를 생성하는 규칙. 
 
-        • $(CX) $(CXFLAGS) -c main.cpp $(DXLFLAGS): main.cpp 파일을 컴파일하여 main.o 객체 파일을 생성. $(CXFLAGS)는 컴파일 시의           플래그로, 디버깅 정보를 포함하고 경고 메시지를 출력.
+• $(CX) $(CXFLAGS) -c main.cpp $(DXLFLAGS): main.cpp 파일을 컴파일하여 main.o 객체 파일을 생성. $(CXFLAGS)는 컴파일 시의           플래그로, 디버깅 정보를 포함하고 경고 메시지를 출력.
 
-        • dxl.o : dxl.hpp dxl.cpp: dxl.o 파일을 생성하는 규칙.
+• dxl.o : dxl.hpp dxl.cpp: dxl.o 파일을 생성하는 규칙.
 
-        • $(CX) $(CXFLAGS) -c dxl.cpp $(DXLFLAGS): dxl.cpp 파일을 컴파일하여 dxl.o 객체 파일을 생성.
-
+• $(CX) $(CXFLAGS) -c dxl.cpp $(DXLFLAGS): dxl.cpp 파일을 컴파일하여 dxl.o 객체 파일을 생성.
+```
 
 
 # main.cpp 
