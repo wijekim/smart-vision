@@ -1,7 +1,7 @@
 # 속도 명령 받기
 
 ➨ Jetson Nano를 이용하여 Dynamixel 모터를 제어하고, 사용자가 속도를 수동으로 조정할 수 있는 시스템 구현
-
+```
 • 프로그램이 실행되면, Dxl 객체가 생성되고, Dynamixel 모터를 제어하기 위해 mx.open()을 통해 모터 장치를 열음.
 (이때 장치 열기에 실패하면 오류 메시지를 출력하고 프로그램이 종료)
 
@@ -14,7 +14,7 @@
 • usleep(20*1000)를 사용하여 20밀리초 동안 잠시 대기하며, 이는 모터 속도 업데이트 주기를 설정하는 역할을 함.
 
 • 무한 루프 안에서 계속 실행되며, Ctrl+c가 입력되면, ctrl_c_pressed플래그가 true로 설정되어 루프가 종료되고, 이 시점에서 모터 제어를 위한 장치 연결이 끊어지고, mx.close()가 호출되어 장치가 닫히게 됨.
-
+```
 # Makefile 설정
 
 ➨ https://github.com/smHan22/Dynamic-Cell-Programming/blob/main/Makefile
