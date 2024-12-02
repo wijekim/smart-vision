@@ -37,5 +37,5 @@
 
 # 실행결과 
 
-https://github.com/user-attachments/assets/021c4a90-0257-4007-8418-ef21015d6b3e
+https://youtu.be/RJZUxHrEgbM
 
