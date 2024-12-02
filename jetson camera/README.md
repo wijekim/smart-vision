@@ -20,7 +20,9 @@
 
 
 # Makefile 설정
-➨ https://github.com/smHan22/jetson-camera/blob/main/Makefile
+```
+https://github.com/smHan22/smart-vision/blob/e58f2652ed96c215bd7fa4cb8552c2bb6410d163/jetson%20camera/Makefile#L1-L11
+```
   
 • Makefile은 프로젝트의 빌드 과정을 자동화하는 파일로, 여러 파일이 포함된 프로젝트를 쉽게 컴파일하고 관리할 수 있도록 함.
 
