@@ -2,6 +2,16 @@
 
 ➨ 지난 시간 라인 검출에 이어서 검출한 라인과 위치오차를 이용하여 속도명령을 설계하는 것을 설명하겠습니다.
 
+⦁ 모터와 연결
+
+https://github.com/smHan22/smart-vision/blob/050106fa565d134d256f365c2debadaf6123141e/line_tracer/linetracer_sim/main.cpp#L48-L51
+
+```ruby
+Dynamixel 모터와의 연결을 시도. dxl.open() 함수가 실패하면 false를 반환
+
+연결이 실패하면 오류 메시지 출력
+```
+
 ⦁ 에러 계산
 
 https://github.com/smHan22/smart-vision/blob/f10042d2c82ec4e662953af3035686868e0f5b8c/line_tracer/linetracer_sim/main.cpp#L135
