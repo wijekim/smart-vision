@@ -39,35 +39,32 @@ https://github.com/smHan22/smart-vision/blob/737707ae92b0c697ed4b5529743b4d9e723
 ```
 # main.cpp 코드
 
-➨ https://github.com/smHan22/Dynamic-Cell-Programming/blob/main/main.cpp
-
 • main.cpp로 Dynamixel 모터를 제어하고, 사용자가 입력한 속도로 모터를 제어하면서 실행 시간을 출력하는 프로그램.
 
-        • Dxl mx; 를 통해 dxl 클래스의 객체를 생성하고, Dynamixel 모터를 제어할 준비를 함.
+https://github.com/smHan22/smart-vision/blob/6369efbc39c2e7ff26ad6c764d58d5d69b9d1654/Dynamixel%20Programming/project1/main.cpp#L1-L37
+```
+• Dxl mx; 를 통해 dxl 클래스의 객체를 생성하고, Dynamixel 모터를 제어할 준비를 함.
 
-        • signal(SIGINT, ctrlc);로 Ctrl+c 신호를 감지하는 시그널 핸들러를 설정. Ctrl+c가 눌리면 ctrl_c_pressed 변수를 true로 설정           하여 프로그램이 종료될 수 있도록 함.
+• signal(SIGINT, ctrlc);로 Ctrl+c 신호를 감지하는 시그널 핸들러를 설정. Ctrl+c가 눌리면 ctrl_c_pressed 변수를 true로 설정           하여 프로그램이 종료될 수 있도록 함.
         
-        • mx.open()을 호출하여 Dynamixel 모터 장치와 연결. 연결에 실패하면 오류 메시지를 출력하고 프로그램을 종료.
+• mx.open()을 호출하여 Dynamixel 모터 장치와 연결. 연결에 실패하면 오류 메시지를 출력하고 프로그램을 종료.
 
-        • 무한 루프 내에서 사용자가 왼쪽과 오른쪽 모터 속도를 입력. 입력된 속도 값은 mx.setVelocity(leftspeed, rightspeed)를 통해            모터에 전달되어 모터의 속도가 설정됨.
+• 무한 루프 내에서 사용자가 왼쪽과 오른쪽 모터 속도를 입력. 입력된 속도 값은 mx.setVelocity(leftspeed, rightspeed)를 통해            모터에 전달되어 모터의 속도가 설정됨.
 
-        • gettimeofday($start, NULL); 를 사용해 시작 시간을 기록함. 모터 속도를 설정한 후, usleep(20*1000);으로 20ms 동안 잠시 대           기. 대기 후, gettimeofday(&end1, NULL);를 통해 종료 시간을 기록하고, 시작 시간과 종료 시간을 비교하여 소요된 실행 시간을            계산.
+• gettimeofday($start, NULL); 를 사용해 시작 시간을 기록함. 모터 속도를 설정한 후, usleep(20*1000);으로 20ms 동안 잠시 대           기. 대기 후, gettimeofday(&end1, NULL);를 통해 종료 시간을 기록하고, 시작 시간과 종료 시간을 비교하여 소요된 실행 시간을            계산.
 
-        • Ctrl+c를 눌러 시그널을 보내면 ctrl_c_pressed가 true로 설정되어 루프를 종료함. 프로그램이 종료될 때 mx.close();로 모터 장           치와의 연결을 종료.
-
+• Ctrl+c를 눌러 시그널을 보내면 ctrl_c_pressed가 true로 설정되어 루프를 종료함. 프로그램이 종료될 때 mx.close();로 모터 장           치와의 연결을 종료.
+```
 # 실행 결과
 
-![image](https://github.com/user-attachments/assets/33d5cb58-ef48-4465-96f7-9f7096fa8f61)
-
-https://github.com/user-attachments/assets/198846ed-4d6b-48b2-b8aa-187565c1bb9c
 
 # 문제점
 
-➨ Ctrl+c를 누르면 바로 종료하지 않고 명령을 한번 더 입력하면 종료하는데 이유를 설명하라. 이걸 해결하려면 어떻게 해야 하는지 나중
-에 생각해볼 것
-
+➨ Ctrl+c를 누르면 바로 종료하지 않고 명령을 한번 더 입력하면 종료하는데 이유를 설명하라. 이걸 해결하려면 어떻게 해야 하는지 나중에 생각해볼 것
+```
 • 코드에서는 Ctrl+C를 누르면 ctrlc 함수가 호출되고, 이 함수는 ctrl_c_pressed 값을 true로 설정합니다. 하지만 ctrl_c_pressed 값을 체크하는 조건이 루프 내에서 바로 break되도록 하는 것이 아니라, 루프가 끝날 때까지 대기하고 있기 때문. 즉, Ctrl+C가 눌려도 그 즉시 break가 발생하지 않고, 사용자가 명령을 한 번 더 입력한 후에 루프가 종료.
-
+```
 ➨ 입력한 속도 명령값이 현재 모터 속도와 차이가 클 때 급가속 또는 급감속이 발생하여 진동과 소음이 발생한다. 이를 해결하는 방법을 설명하라.
-
+```
 • 모터에 급격한 가속이나 감속을 적용하면 진동과 소음이 발생할 수 있음. 모터가 설정된 속도에 갑작스럽게 도달하려 할 때 발생하는 문제로, 모터의 기계적인 특성과 전자적인 제어 방식에서 발생할 수 있는 현상임. 급격한 가속과 감속을 방지하는 가장 효과적인 방법은 속도의 점진적인 변화를 적용하는 것.
+```
