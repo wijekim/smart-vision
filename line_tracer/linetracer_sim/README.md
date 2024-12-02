@@ -2,6 +2,8 @@
 
 ➨ 지난 시간 라인 검출에 이어서 검출한 라인과 위치오차를 이용하여 속도명령을 설계하는 것을 설명하겠습니다.
 
+⦁ 에러 계산
+
 https://github.com/smHan22/smart-vision/blob/f10042d2c82ec4e662953af3035686868e0f5b8c/line_tracer/linetracer_sim/main.cpp#L135
 
 ```ruby
@@ -13,6 +15,8 @@ error는 화면 중심과 라인의 중심 간의 x축 거리 차이를 나타�
 
 값이 양수이면 라인이 화면 중앙보다 왼쪽에 위치, 값이 음수이면 라인이 화면 중앙보다 오른쪽에 위치, 값이 0이면 라인이 화면 중앙에 정확히 위치
 ```
+
+⦁ 바퀴 속도 계산
 
 https://github.com/smHan22/smart-vision/blob/11ae7d0a7293dad3a580a871046a4447bb1a223d/line_tracer/linetracer_sim/main.cpp#L138-L139
 
@@ -29,3 +33,6 @@ error < 0 이면 오른쪽 바퀴 속도가 줄고, 왼쪽 바퀴 속도가 늘�
 
 error == 0이면 양쪽 바퀴 속도가 동일하여 직진
 ```
+
+⦁ 모션 제어 실행
+
