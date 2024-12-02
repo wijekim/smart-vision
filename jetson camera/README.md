@@ -4,18 +4,19 @@
 
 • 각각의 영상은 특정 포트를 통해 네트워크로 전송되며, OpenCV와 GStreamer를 사용하여 Jetson Nano의 영상을 처리
 
-  • 개발 환경 : Jetson Nano
+```
+• 개발 환경 : Jetson Nano
   
-  • 라이브러리 OpenCV (GStreamer 지원 포함)
+• 라이브러리 OpenCV (GStreamer 지원 포함)
   
-  • 네트워크 송출 포드:
+• 네트워크 송출 포드:
   
           원본 영상: 포트 8001
   
           그레이스케일 영상: 포트 8002
   
           이진화 영상: 포트 8003
-
+```
 
 
 # Makefile 설정
